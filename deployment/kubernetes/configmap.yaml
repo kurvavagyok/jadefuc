@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: jade-config
+  namespace: jade-security
+data:
+  DATABASE_URL: "postgresql+asyncpg://postgres:password@postgres-service:5432/jade_security"
+  REDIS_URL: "redis://redis-service:6379/0"
+  LOG_LEVEL: "INFO"
+  MAX_CONCURRENT_SCANS: "20"
+  RATE_LIMIT_REQUESTS: "1000"

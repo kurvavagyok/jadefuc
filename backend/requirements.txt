@@ -1,0 +1,16 @@
+fastapi
+uvicorn[standard]
+sqlalchemy[asyncio]
+asyncpg
+pydantic
+pydantic-settings
+bcrypt
+python-jose
+pyotp
+structlog
+prometheus_client
+aiohttp
+requests
+qrcode
+python-dotenv
+nmap

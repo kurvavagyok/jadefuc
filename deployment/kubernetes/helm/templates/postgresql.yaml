@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jade-ultimate-postgresql
+  labels:
+    app: jade-ultimate-postgresql
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: jade-ultimate-postgresql
+  template:
+    metadata:
+      labels:
+        app: jade-ultimate-postgresql
+    spec:
+      containers:
+      - name: postgres
+        image: {{ .Values.postgresql.image }}
+        ports:
+        - containerPort: 5432
+        env:
+        - name: POSTGRES_DB
+          value: {{ .Values.postgresql.db.name }}
+        - name: POSTGRES_USER
+          value: {{ .Values.postgresql.db.user }}
+        - name: POSTGRES_PASSWORD
+          value: {{ .Values.postgresql.db.password }}
+        volumeMounts:
+        - name: postgres-storage
+          mountPath: /var/lib/postgresql/data
+        resources:
+          requests:
+            memory: "256Mi"
+            cpu: "250m"
+          limits:
+            memory: "512Mi"
+            cpu: "500m"
+      volumes:
+      - name: postgres-storage
+        emptyDir: {}

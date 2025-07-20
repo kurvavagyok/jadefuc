@@ -1,0 +1,37 @@
+replicaCount: 3
+
+image:
+  repository: jade-security
+  tag: latest
+  pullPolicy: IfNotPresent
+
+service:
+  type: LoadBalancer
+  port: 80
+
+postgresql:
+  enabled: true
+  image: postgres:15-alpine
+  db:
+    user: postgres
+    password: secure-db-password-2025
+    name: jade_security
+  persistence:
+    enabled: true
+    size: 5Gi
+
+redis:
+  enabled: true
+  image: redis:7-alpine
+  password: redis_password_2025
+  persistence:
+    enabled: true
+    size: 2Gi
+
+resources:
+  limits:
+    cpu: 1000m
+    memory: 1Gi
+  requests:
+    cpu: 500m
+    memory: 512Mi

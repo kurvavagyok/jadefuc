@@ -1,0 +1,50 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "jade-ultimate.fullname" . }}
+  labels:
+    app: {{ include "jade-ultimate.name" . }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: {{ include "jade-ultimate.name" . }}
+  template:
+    metadata:
+      labels:
+        app: {{ include "jade-ultimate.name" . }}
+    spec:
+      containers:
+      - name: jade-backend
+        image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+        ports:
+        - containerPort: 8000
+        env:
+        - name: DATABASE_URL
+          value: "postgresql+asyncpg://{{ .Values.postgresql.db.user }}:{{ .Values.postgresql.db.password }}@jade-ultimate-postgresql:5432/{{ .Values.postgresql.db.name }}"
+        - name: REDIS_URL
+          value: "redis://:{{ .Values.redis.password }}@jade-ultimate-redis:6379/0"
+        - name: SECRET_KEY
+          valueFrom:
+            secretKeyRef:
+              name: jade-secrets
+              key: SECRET_KEY
+        - name: JWT_SECRET_KEY
+          valueFrom:
+            secretKeyRef:
+              name: jade-secrets
+              key: JWT_SECRET_KEY
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 8000
+          initialDelaySeconds: 30
+          periodSeconds: 10
+        readinessProbe:
+          httpGet:
+            path: /health
+            port: 8000
+          initialDelaySeconds: 5
+          periodSeconds: 5
+        resources:
+          {{- toYaml .Values.resources | nindent 10 }}

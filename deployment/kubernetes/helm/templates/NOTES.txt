@@ -1,0 +1,7 @@
+JADE Ultimate Security Platform has been deployed!
+
+- Backend:      http://<k8s-loadbalancer-ip>/api
+- Frontend:     http://<k8s-loadbalancer-ip>/
+- Monitoring:   /metrics on backend pod
+
+Make sure your secrets and API keys are configured!

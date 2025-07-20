@@ -1,0 +1,12 @@
+import axios from "axios";
+
+const API_URL = import.meta.env.VITE_API_URL || "/api/v1";
+
+export async function login(username: string, password: string) {
+  const { data } = await axios.post(`${API_URL}/auth/login`, { username, password });
+  localStorage.setItem("token", data.access_token);
+}
+
+export function getToken() {
+  return localStorage.getItem("token");
+}

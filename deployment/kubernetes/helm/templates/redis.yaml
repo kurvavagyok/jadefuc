@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jade-ultimate-redis
+  labels:
+    app: jade-ultimate-redis
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: jade-ultimate-redis
+  template:
+    metadata:
+      labels:
+        app: jade-ultimate-redis
+    spec:
+      containers:
+      - name: redis
+        image: {{ .Values.redis.image }}
+        ports:
+        - containerPort: 6379
+        command: ["redis-server", "--appendonly", "yes"]
+        resources:
+          requests:
+            memory: "128Mi"
+            cpu: "100m"
+          limits:
+            memory: "256Mi"
+            cpu: "200m"
