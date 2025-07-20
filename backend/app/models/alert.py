@@ -26,7 +26,7 @@ class Alert(Base):
     title = Column(String(255), nullable=False)
     message = Column(String, nullable=False)
     status = Column(Enum(AlertStatus), default=AlertStatus.ACTIVE)
-    metadata = Column(JSON, default=dict)
+    alert_metadata = Column(JSON, default=dict)
     created_at = Column(DateTime, default=func.now())
     updated_at = Column(DateTime, default=func.now(), onupdate=func.now())
     resolved_at = Column(DateTime, nullable=True)
