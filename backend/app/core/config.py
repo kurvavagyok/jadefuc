@@ -137,7 +137,7 @@ AI_MODELS = {
     },
     "gemini-pro": {
         "provider": "google",
-        "model": "gemini-pro",
+        "model": "gemini-1.5-flash",
         "max_tokens": 4000,
         "temperature": 0.1,
         "use_case": "threat_intelligence"
