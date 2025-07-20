@@ -8,6 +8,7 @@ from app.models.scan import Scan, ScanStatus
 from app.models.user import User
 from app.services.ai_service import ai_service
 from app.api.v1.endpoints.auth import get_current_user
+from app.core.config import settings, AI_MODELS
 from pydantic import BaseModel
 from typing import List, Dict, Any
 import structlog
