@@ -116,14 +116,14 @@ AI_MODELS = {
     },
     "gpt-4.1": {
         "provider": "github",
-        "model": "openai/gpt-4.1",
+        "model": "gpt-4o",
         "max_tokens": 4000,
         "temperature": 0.1,
         "use_case": "advanced_analysis"
     },
     "grok-3": {
         "provider": "github",
-        "model": "xai/grok-3",
+        "model": "grok-beta",
         "max_tokens": 4000,
         "temperature": 0.1,
         "use_case": "creative_analysis"
