@@ -130,7 +130,7 @@ AI_MODELS = {
     },
     "llama-4-scout": {
         "provider": "cerebras",
-        "model": "llama-4-scout",
+        "model": "llama3.1-8b",
         "max_tokens": 4000,
         "temperature": 0.1,
         "use_case": "fast_analysis"
