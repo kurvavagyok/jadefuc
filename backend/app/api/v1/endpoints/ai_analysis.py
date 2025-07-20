@@ -31,7 +31,28 @@ class AnalysisResponse(BaseModel):
 @router.get("/models", response_model=ModelListResponse)
 async def list_available_models(current_user: User = Depends(get_current_user)):
     """Get list of available AI models"""
-    models = ai_service.get_available_models()
+    # Return the models with availability based on API keys
+    models = {}
+    for model_name, config in AI_MODELS.items():
+        provider = config['provider']
+        is_available = False
+        
+        if provider == 'openai' and settings.OPENAI_API_KEY:
+            is_available = True
+        elif provider == 'google' and settings.GEMINI_API_KEY:
+            is_available = True
+        elif provider == 'github' and settings.GITHUB_TOKEN:
+            is_available = True
+        elif provider == 'cerebras' and settings.CEREBRAS_API_KEY:
+            is_available = True
+            
+        models[model_name] = {
+            "provider": provider,
+            "model": config['model'],
+            "use_case": config['use_case'],
+            "available": is_available
+        }
+    
     return ModelListResponse(models=models)
 
 @router.post("/analyze", response_model=AnalysisResponse)
