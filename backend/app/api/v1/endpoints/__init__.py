@@ -1,0 +1,1 @@
+# JADE Ultimate Security Platform - API Endpoints Package
