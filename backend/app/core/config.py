@@ -18,7 +18,7 @@ class Settings(BaseSettings):
     ACCESS_TOKEN_EXPIRE_MINUTES: int = 30
     REFRESH_TOKEN_EXPIRE_MINUTES: int = 60 * 24 * 7
     DATABASE_URL: str = Field(
-        default="postgresql+asyncpg://postgres:password@localhost:5432/jade_security",
+        default="postgresql://neondb_owner:npg_y8Vnj3GfkoYb@ep-royal-voice-afjmmrl0.c-2.us-west-2.aws.neon.tech/neondb?sslmode=require",
         env="DATABASE_URL"
     )
     DATABASE_POOL_SIZE: int = 20
