@@ -339,20 +339,15 @@ class AIService:
         
         for model_name, config in AI_MODELS.items():
             provider = config['provider']
-            if provider in self.providers and self.providers[provider]['initialized']:
-                available_models[model_name] = {
-                    "provider": provider,
-                    "model": config['model'],
-                    "use_case": config['use_case'],
-                    "available": True
-                }
-            else:
-                available_models[model_name] = {
-                    "provider": provider,
-                    "model": config['model'],
-                    "use_case": config['use_case'],
-                    "available": False
-                }
+            is_available = (provider in self.providers and 
+                          self.providers[provider].get('initialized', False))
+            
+            available_models[model_name] = {
+                "provider": provider,
+                "model": config['model'],
+                "use_case": config['use_case'],
+                "available": is_available
+            }
         
         return available_models
 
