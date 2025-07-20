@@ -13,7 +13,7 @@ aiohttp
 requests
 qrcode
 python-dotenv
-nmap
+python-nmap
 openai
 google-generativeai
 httpx
