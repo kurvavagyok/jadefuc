@@ -113,12 +113,26 @@ AI_MODELS = {
         "temperature": 0.1,
         "use_case": "detailed_analysis"
     },
-    "claude-3-opus": {
-        "provider": "anthropic",
-        "model": "claude-3-opus-20240229",
+    "gpt-4.1": {
+        "provider": "github",
+        "model": "openai/gpt-4.1",
         "max_tokens": 4000,
         "temperature": 0.1,
-        "use_case": "security_analysis"
+        "use_case": "advanced_analysis"
+    },
+    "grok-3": {
+        "provider": "github",
+        "model": "xai/grok-3",
+        "max_tokens": 4000,
+        "temperature": 0.1,
+        "use_case": "creative_analysis"
+    },
+    "llama-4-scout": {
+        "provider": "cerebras",
+        "model": "llama-4-scout",
+        "max_tokens": 4000,
+        "temperature": 0.1,
+        "use_case": "fast_analysis"
     },
     "gemini-pro": {
         "provider": "google",
@@ -126,13 +140,6 @@ AI_MODELS = {
         "max_tokens": 4000,
         "temperature": 0.1,
         "use_case": "threat_intelligence"
-    },
-    "mixtral-8x7b": {
-        "provider": "together",
-        "model": "mistralai/Mixtral-8x7B-Instruct-v0.1",
-        "max_tokens": 4000,
-        "temperature": 0.1,
-        "use_case": "code_analysis"
     }
 }
 
