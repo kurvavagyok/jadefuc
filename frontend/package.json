@@ -4,16 +4,17 @@
   "private": true,
   "description": "JADE Ultimate Security Platform - Modern React Frontend",
   "dependencies": {
+    "antd": "^5.14.0",
+    "axios": "^1.6.7",
+    "moment": "^2.29.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-router-dom": "^6.23.0",
-    "axios": "^1.6.7",
-    "antd": "^5.14.0",
-    "moment": "^2.29.4"
+    "react-router-dom": "^6.23.0"
   },
   "devDependencies": {
     "@types/react": "^18.2.42",
     "@types/react-dom": "^18.2.17",
+    "@vitejs/plugin-react": "^4.7.0",
     "typescript": "^5.4.5",
     "vite": "^5.2.8"
   },
