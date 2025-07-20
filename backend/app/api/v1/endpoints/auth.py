@@ -8,6 +8,7 @@ from sqlalchemy import select, and_, or_, func
 from datetime import datetime, timedelta
 from typing import Optional, List
 from pydantic import BaseModel, EmailStr, Field
+import base64
 import structlog
 
 from app.core.database import get_db
