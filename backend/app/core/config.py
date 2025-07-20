@@ -102,14 +102,14 @@ settings = Settings()
 AI_MODELS = {
     "gpt-4": {
         "provider": "openai",
-        "model": "gpt-4",
+        "model": "gpt-4o-mini",
         "max_tokens": 4000,
         "temperature": 0.1,
         "use_case": "general_analysis"
     },
     "gpt-4-turbo": {
         "provider": "openai", 
-        "model": "gpt-4-turbo-preview",
+        "model": "gpt-4o",
         "max_tokens": 4000,
         "temperature": 0.1,
         "use_case": "detailed_analysis"
