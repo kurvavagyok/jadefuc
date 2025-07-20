@@ -5,7 +5,6 @@ from typing import AsyncGenerator, Optional
 from sqlalchemy.ext.asyncio import create_async_engine, AsyncSession, async_sessionmaker
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import MetaData, event
-from sqlalchemy.pool import QueuePool
 from sqlalchemy.orm import sessionmaker
 import structlog
 from contextlib import asynccontextmanager
