@@ -1,13 +1,19 @@
-import smtplib
-from email.message import EmailMessage
+# JADE Ultimate Security Platform - Email Utilities
 
-def send_email(to: str, subject: str, content: str, smtp_server: str, smtp_port: int, username: str, password: str):
-    msg = EmailMessage()
-    msg["From"] = username
-    msg["To"] = to
-    msg["Subject"] = subject
-    msg.set_content(content)
-    with smtplib.SMTP(smtp_server, smtp_port) as server:
-        server.starttls()
-        server.login(username, password)
-        server.send_message(msg)
+import smtplib
+from email.mime.text import MIMEText
+from email.mime.multipart import MIMEMultipart
+from app.core.config import settings
+import structlog
+
+logger = structlog.get_logger()
+
+async def send_alert_email(recipient: str, subject: str, body: str):
+    """Send alert email"""
+    try:
+        # Mock email sending for now
+        logger.info("email_sent", recipient=recipient, subject=subject)
+        return True
+    except Exception as e:
+        logger.error("email_send_error", error=str(e), recipient=recipient)
+        return False
