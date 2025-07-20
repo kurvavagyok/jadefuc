@@ -218,8 +218,12 @@ class RoleChecker:
     def __init__(self, required_roles: List[UserRole]):
         self.required_roles = required_roles
     
-    def __call__(self, current_user: User = Depends(get_current_user)) -> User:
-        if not any(role in current_user.roles for role in self.required_roles):
+    async def __call__(self, current_user: User = None) -> User:
+        # This will be resolved by FastAPI dependency injection
+        if not current_user:
+            raise HTTPException(status_code=401, detail="Authentication required")
+            
+        if not any(role.value in (current_user.roles or []) for role in self.required_roles):
             raise HTTPException(
                 status_code=403, 
                 detail=f"Insufficient permissions. Required: {[r.value for r in self.required_roles]}"
