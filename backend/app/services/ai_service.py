@@ -207,24 +207,31 @@ class AIService:
             messages.append({"role": "system", "content": system_prompt})
         messages.append({"role": "user", "content": prompt})
         
-        response = client.complete(
-            messages=messages,
-            model=model_config['model'],
-            temperature=temperature,
-            max_tokens=max_tokens
-        )
-        
-        if response.status_code != 200:
-            raise Exception(f"GitHub Models API error: {response.status_code}")
-        
-        result = response.json()
-        
-        return AIResponse(
-            content=result['choices'][0]['message']['content'],
-            model=model_config['model'],
-            provider='github',
-            tokens_used=result.get('usage', {}).get('total_tokens')
-        )
+        try:
+            response = client.complete(
+                messages=messages,
+                model=model_config['model'],
+                temperature=temperature,
+                max_tokens=max_tokens
+            )
+            
+            # Handle the response properly
+            if hasattr(response, 'choices') and response.choices:
+                content = response.choices[0].message.content
+                tokens_used = getattr(response, 'usage', {}).get('total_tokens', None)
+            else:
+                content = str(response)
+                tokens_used = None
+            
+            return AIResponse(
+                content=content,
+                model=model_config['model'],
+                provider='github',
+                tokens_used=tokens_used
+            )
+        except Exception as e:
+            # GitHub Models might not be accessible with current token
+            raise Exception(f"GitHub Models API error: {str(e)}")
 
     async def _cerebras_completion(self, prompt: str, model_config: Dict,
                                  system_prompt: Optional[str], temperature: float,
