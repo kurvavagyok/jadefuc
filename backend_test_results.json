@@ -1,0 +1,172 @@
+{
+  "health_check": {
+    "status": "passed",
+    "details": {
+      "status_code": 200,
+      "response": {
+        "status": "healthy",
+        "version": "1.0.0",
+        "creator": "Jade made by Koll\u00e1r S\u00e1ndor",
+        "timestamp": 1752989925.9531348
+      },
+      "has_status": true,
+      "has_version": true,
+      "has_creator": true
+    }
+  },
+  "ai_models": {
+    "status": "passed",
+    "details": {
+      "status_code": 200,
+      "total_models": 6,
+      "expected_models": [
+        "gpt-4",
+        "gpt-4-turbo",
+        "gpt-4.1",
+        "grok-3",
+        "llama-4-scout",
+        "gemini-pro"
+      ],
+      "found_models": [
+        "gpt-4",
+        "gpt-4-turbo",
+        "gpt-4.1",
+        "grok-3",
+        "llama-4-scout",
+        "gemini-pro"
+      ],
+      "available_models": [
+        "gpt-4",
+        "gpt-4-turbo",
+        "gpt-4.1",
+        "grok-3",
+        "llama-4-scout",
+        "gemini-pro"
+      ],
+      "models_data": {
+        "gpt-4": {
+          "provider": "openai",
+          "model": "gpt-4o-mini",
+          "use_case": "general_analysis",
+          "available": true
+        },
+        "gpt-4-turbo": {
+          "provider": "openai",
+          "model": "gpt-4o",
+          "use_case": "detailed_analysis",
+          "available": true
+        },
+        "gpt-4.1": {
+          "provider": "github",
+          "model": "gpt-4o",
+          "use_case": "advanced_analysis",
+          "available": true
+        },
+        "grok-3": {
+          "provider": "github",
+          "model": "grok-beta",
+          "use_case": "creative_analysis",
+          "available": true
+        },
+        "llama-4-scout": {
+          "provider": "cerebras",
+          "model": "llama3.1-8b",
+          "use_case": "fast_analysis",
+          "available": true
+        },
+        "gemini-pro": {
+          "provider": "google",
+          "model": "gemini-1.5-flash",
+          "use_case": "threat_intelligence",
+          "available": true
+        }
+      }
+    }
+  },
+  "ai_tests": {
+    "status": "passed",
+    "details": {
+      "total_tested": 6,
+      "successful": 2,
+      "failed": 4,
+      "results": {
+        "gpt-4": false,
+        "gpt-4-turbo": false,
+        "gpt-4.1": false,
+        "grok-3": false,
+        "llama-4-scout": true,
+        "gemini-pro": true
+      }
+    }
+  },
+  "dashboard_stats": {
+    "status": "passed",
+    "details": {
+      "status_code": 200,
+      "response": {
+        "total_scans": 0,
+        "active_scans": 0,
+        "vulnerabilities_found": 0,
+        "critical_issues": 0,
+        "ai_models_available": {
+          "gpt-4": {
+            "provider": "openai",
+            "model": "gpt-4o-mini",
+            "use_case": "general_analysis",
+            "available": true
+          },
+          "gpt-4-turbo": {
+            "provider": "openai",
+            "model": "gpt-4o",
+            "use_case": "detailed_analysis",
+            "available": true
+          },
+          "gpt-4.1": {
+            "provider": "github",
+            "model": "gpt-4o",
+            "use_case": "advanced_analysis",
+            "available": true
+          },
+          "grok-3": {
+            "provider": "github",
+            "model": "grok-beta",
+            "use_case": "creative_analysis",
+            "available": true
+          },
+          "llama-4-scout": {
+            "provider": "cerebras",
+            "model": "llama3.1-8b",
+            "use_case": "fast_analysis",
+            "available": true
+          },
+          "gemini-pro": {
+            "provider": "google",
+            "model": "gemini-1.5-flash",
+            "use_case": "threat_intelligence",
+            "available": true
+          }
+        }
+      },
+      "has_all_fields": true,
+      "expected_fields": [
+        "total_scans",
+        "active_scans",
+        "vulnerabilities_found",
+        "critical_issues",
+        "ai_models_available"
+      ],
+      "found_fields": [
+        "total_scans",
+        "active_scans",
+        "vulnerabilities_found",
+        "critical_issues",
+        "ai_models_available"
+      ]
+    }
+  },
+  "summary": {
+    "total_tests": 4,
+    "passed": 4,
+    "failed": 0
+  }
+}
