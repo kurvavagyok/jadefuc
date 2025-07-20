@@ -26,7 +26,6 @@ Base = declarative_base(metadata=metadata)
 
 engine = create_async_engine(
     settings.DATABASE_URL,
-    poolclass=QueuePool,
     pool_size=settings.DATABASE_POOL_SIZE,
     max_overflow=settings.DATABASE_MAX_OVERFLOW,
     pool_timeout=settings.DATABASE_POOL_TIMEOUT,
